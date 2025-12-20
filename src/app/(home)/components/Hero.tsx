@@ -1,7 +1,5 @@
 // src/app/(home)/components/Hero.tsx
-import Image from "next/image"
-import starSvg from '@/assets/images/ai/star.svg'
-import aiImg3 from '@/assets/images/ai/img-3.jpg'
+
 import vpaHero from '@/assets/images/vpa/Hero.png'
 import BetaSignupModal from "@/components/BetaSignupModal"
 

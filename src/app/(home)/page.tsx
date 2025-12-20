@@ -8,9 +8,6 @@ import TrendingTopics from "./components/TrendingTopics"
 
 import Footer4 from "./components/Footer4"
 import Faqs from "./components/Faqs"
-import BackgroundNeon from "@/components/BackgroundNeon"
-import BackgroundNeonSoft from "@/components/BackgroundNeonSoft"
-import BackgroundNeonTron from "@/components/BackgroundNeonTron"
 import BackgroundNeonPureCyan from "@/components/BackgroundNeonPureCyan"
 
 const Index4 = () => {

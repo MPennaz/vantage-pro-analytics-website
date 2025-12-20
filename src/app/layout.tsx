@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import AppProviders from "@/components/wrappers/AppProviders";
 import logo from '@/assets/images/logo.png'
-import { DEFAULT_PAGE_TITLE } from "@/common/constants";
 import Image from "next/image";
 
 import 'aos/dist/aos.css';

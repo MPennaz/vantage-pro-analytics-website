@@ -1,10 +1,10 @@
 // src/app/(home)/components/TrendingTopics.tsx
-import Image from "next/image"
+
 import type { TopicType } from "../types"
 import { trendingTopics } from "../data"
-import IconifyIcon from "@/components/wrappers/IconifyIcon"
 
-const TopicCard = ({ avatars, description, title, id }: TopicType) => {
+
+const TopicCard = ({  description, title, id }: TopicType) => {
   return (
     <div
       className="rounded-lg border border-white/10 bg-default-950/40 p-6"
