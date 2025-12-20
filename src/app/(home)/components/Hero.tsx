@@ -13,12 +13,13 @@ const marqueeGroup1 = [
 ]
 
 const marqueeGroup2 = [
-  "Bottlenecks",
-  "Quality drift",
-  "Low inventory",
-  "Orders at risk",
-  "Hidden scrap",
+  "Missed deliveries",
+  "Scrap you can’t explain",
+  "Inventory surprises",
+  "Late purchase orders",
+  "Recurring quality issues",
 ]
+
 
 
   return (
