@@ -52,12 +52,7 @@ const Features = () => {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-medium capitalize text-white mb-4">
               What can Vantage Pro do for your team?
-            </h2>
-            <p className="text-sm text-default-200 font-medium">
-              Six core capabilities built for the people who actually run a plant—
-              production, quality, logistics, leadership and IT—all working from the
-              same live data instead of stitched-together spreadsheets.
-            </p>
+            </h2>            
           </div>
         </div>
 

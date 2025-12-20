@@ -240,11 +240,11 @@ const BetaSignupModal = ({
                     onChange={(e) => setManufacturingType(e.target.value)}
                   >
                     <option value="">Select one…</option>
-                    <option value="Batch / Process (chemicals, coatings, resins)">
-                      Batch / Process (chemicals, coatings, resins)
+                    <option value="Batch / Process )">
+                      Batch / Process 
                     </option>
-                    <option value="Discrete (metal, assemblies, equipment)">
-                      Discrete (metal, assemblies, equipment)
+                    <option value="Discrete ">
+                      Discrete 
                     </option>
                     <option value="Plastics / Composites">Plastics / Composites</option>
                     <option value="Food & Beverage">Food & Beverage</option>

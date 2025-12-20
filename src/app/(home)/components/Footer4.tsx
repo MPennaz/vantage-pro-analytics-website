@@ -1,4 +1,4 @@
-// src/app/pages/index-4/components/Footer4.tsx
+// src/app/(home)/components/Footer4.tsx
 import Image from "next/image"
 import logo from "@/assets/images/logo.png"
 import IconifyIcon from "@/components/wrappers/IconifyIcon"
@@ -29,11 +29,11 @@ const Footer4 = () => {
         {/* Logo */}
         <Image
           src={logo}
-          width={179}
-          height={56}
-          className="h-14 mx-auto"
           alt="Vantage Pro Analytics"
+          className="mx-auto w-[180px] h-auto"
+          priority
         />
+
 
         {/* Tagline */}
         <p className="text-sm text-default-400 font-medium">

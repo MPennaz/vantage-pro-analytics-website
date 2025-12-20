@@ -2,6 +2,7 @@
 import { cn } from "@/helpers/cn"
 import { faqs } from "../data"
 import IconifyIcon from "@/components/wrappers/IconifyIcon"
+import QuestionModal from "@/components/QuestionModal"
 
 const Faqs = () => {
   return (
@@ -22,12 +23,11 @@ const Faqs = () => {
               Straight answers to the most common questions manufacturers ask
               about Vantage Pro Analytics.
             </p>
-            <button
-              className="mt-10 inline-flex items-center justify-center gap-2 border border-white/10 text-white py-2 px-6 rounded-full hover:bg-primary-hover transition-all duration-300"
-            >
-              Still have questions?
-              <IconifyIcon icon="lucide:move-right" className="h-5 w-5" />
-            </button>
+            <QuestionModal
+                triggerLabel="Still have questions?"
+                triggerClassName="mt-10 inline-flex items-center justify-center gap-2 border border-white/10 text-white py-2 px-6 rounded-full hover:bg-primary-hover transition-all duration-300"
+                subject="FAQ section question"
+              />
           </div>
 
           {/* Right side: accordion */}

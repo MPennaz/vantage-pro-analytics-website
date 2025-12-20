@@ -11,20 +11,16 @@ const Footer = () => {
           © {currentYear} Vantage Pro Analytics
         </p>
 
-        <div className="flex gap-4 text-sm font-medium text-default-400">
-          <Link
-            href="/privacy"
-            className="hover:text-white transition-colors"
-          >
-            Privacy Policy
+        <div className="flex items-center gap-4">
+          <Link href="/terms" className="hover:text-white transition">
+            Terms
           </Link>
-          <Link
-            href="/terms"
-            className="hover:text-white transition-colors"
-          >
-            Terms of Service
+          <span className="text-white/10">|</span>
+          <Link href="/privacy" className="hover:text-white transition">
+            Privacy
           </Link>
         </div>
+
       </div>
     </div>
   )
