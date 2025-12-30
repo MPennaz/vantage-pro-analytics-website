@@ -12,15 +12,6 @@ const marqueeGroup1 = [
   "One platform",
 ]
 
-const marqueeGroup2 = [
-  "Missed deliveries",
-  "Scrap you can’t explain",
-  "Inventory surprises",
-  "Late purchase orders",
-  "Recurring quality issues",
-]
-
-
 
   return (
     <>

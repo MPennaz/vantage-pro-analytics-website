@@ -23,25 +23,9 @@ const TopNavbar = ({ navLinks }: { navLinks: NavbarLinkProps[] }) => {
     return () => {
       document.body.classList.remove("bg-default-900")
     }
-  }, [])
+  }, []) 
 
-  const openBetaModal = useCallback(() => {
-    const trigger = document.getElementById(BETA_TRIGGER_ID) as HTMLButtonElement | null
 
-    if (trigger) {
-      trigger.click()
-      return
-    }
-
-    // Fallback: if the trigger isn't in the DOM (rare), jump to home and try again.
-    const homeEl = document.getElementById("home")
-    homeEl?.scrollIntoView({ behavior: "smooth", block: "start" })
-
-    window.setTimeout(() => {
-      const retry = document.getElementById(BETA_TRIGGER_ID) as HTMLButtonElement | null
-      retry?.click()
-    }, 350)
-  }, [])
 
   return (
     <header id="navbar-sticky" className={`navbar ${scrollY >= 50 ? "nav-sticky" : ""}`}>

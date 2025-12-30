@@ -54,7 +54,7 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
     setTimeline("")
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(null)
     setSuccess(false)
@@ -81,14 +81,22 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
       })
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data?.error || "There was an issue sending your request.")
+        const data = (await res.json().catch(() => null)) as
+          | { error?: string }
+          | null
+        throw new Error(
+          data?.error || "There was an issue sending your request.",
+        )
       }
 
       setSuccess(true)
       resetForm()
-    } catch (err: any) {
-      setError(err.message || "There was an issue sending your request.")
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "There was an issue sending your request."
+      setError(message)
     } finally {
       setLoading(false)
     }
@@ -106,10 +114,7 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
         onClick={() => setOpen(true)}
         className={triggerClasses}
       >
-        <IconifyIcon
-          icon="lucide:calendar-clock"
-          className="h-5 w-5 me-2"
-        />
+        <IconifyIcon icon="lucide:calendar-clock" className="h-5 w-5 me-2" />
         Request a Demo
       </button>
 
@@ -141,8 +146,9 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
                       See Vantage Pro Analytics in your world
                     </h3>
                     <p className="mt-2 text-sm text-default-200">
-                      Share a bit about your operation and what you’d like to see.
-                      We’ll follow up with a short call slot and a tailored walkthrough.
+                      Share a bit about your operation and what you’d like to
+                      see. We’ll follow up with a short call slot and a tailored
+                      walkthrough.
                     </p>
                   </div>
                   <button
@@ -242,7 +248,8 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
 
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-default-400 mb-1">
-                      What would you like us to focus on?<span className="text-rose-400">*</span>
+                      What would you like us to focus on?
+                      <span className="text-rose-400">*</span>
                     </label>
                     <textarea
                       value={goals}
@@ -253,20 +260,18 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
                     />
                   </div>
 
-                  {error && (
-                    <p className="text-xs text-rose-400">
-                      {error}
-                    </p>
-                  )}
+                  {error && <p className="text-xs text-rose-400">{error}</p>}
                   {success && (
                     <p className="text-xs text-emerald-400">
-                      Thanks — your request is in. We’ll follow up shortly with some time options.
+                      Thanks — your request is in. We’ll follow up shortly with
+                      some time options.
                     </p>
                   )}
 
                   <div className="pt-2 flex items-center justify-between gap-4">
                     <p className="text-[11px] text-default-400">
-                      No spam, ever. Just a focused demo and a few follow-up notes if helpful.
+                      No spam, ever. Just a focused demo and a few follow-up
+                      notes if helpful.
                     </p>
                     <button
                       type="submit"
