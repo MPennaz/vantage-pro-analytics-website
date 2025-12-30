@@ -1,67 +1,103 @@
 "use client"
-import { useEffect, useRef } from "react"
-import Gumshoe from 'gumshoejs'
+
+import { useEffect, useRef, useCallback } from "react"
+import Gumshoe from "gumshoejs"
 import type { NavbarLinkProps } from "@/types/data"
 import IconifyIcon from "./wrappers/IconifyIcon"
 import Link from "next/link"
 import Image from "next/image"
-import logo from '@/assets/images/logo.png'
+import logo from "@/assets/images/logo.png"
 import useScrollEvent from "@/hooks/useScrollEvent"
+import RequestDemoButton from "@/components/RequestDemoButton"
+
+const BETA_TRIGGER_ID = "beta-signup-trigger"
 
 const TopNavbar = ({ navLinks }: { navLinks: NavbarLinkProps[] }) => {
   const navRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScrollEvent()
 
   useEffect(() => {
-    document.body.classList.add('bg-default-900')
-    if (navRef.current) new Gumshoe('.navbar-nav a',{offset:80})
+    document.body.classList.add("bg-default-900")
+    if (navRef.current) new Gumshoe(".navbar-nav a", { offset: 80 })
 
-    return (() => {
-      document.body.classList.remove('bg-default-900')
-    })
+    return () => {
+      document.body.classList.remove("bg-default-900")
+    }
   }, [])
-  return (
-    <>
-      <header  id="navbar-sticky" className={`navbar ${scrollY>=50 && 'nav-sticky'}`}>
-        <div className="container">
-          <nav>
-            <Link href="/" className="logo">
-                <Image
-                  src={logo}
-                  alt="Vantage Pro Analytics logo"
-                  width={220}          
-                  height={60}          
-                  className="h-12 w-auto object-contain"
-                />
-              </Link>
 
-            <div className="lg:hidden flex items-center ms-auto px-2.5">
-              <button className="hs-collapse-toggle inline-flex items-center justify-center h-9 w-12 rounded-md border border-white/20 bg-default-100/5" type="button" id="hs-unstyled-collapse" data-hs-collapse="#mobileMenu" data-hs-type="collapse">
-                <IconifyIcon icon="lucide:menu" className="h-5 w-5 stroke-white" />
-              </button>
-            </div>
-            <div ref={navRef} id="mobileMenu" className="hs-collapse transition-all duration-300 lg:basis-auto basis-full grow hidden lg:flex items-center justify-center mx-auto mt-2 lg:mt-0">
-              <ul  id="navbar-navlist" className="navbar-nav">
-                {navLinks.map((item, idx) => (
-                  <li key={item.link + idx} className="nav-item">
-                    <a href={item.link} className="nav-link">
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+  const openBetaModal = useCallback(() => {
+    const trigger = document.getElementById(BETA_TRIGGER_ID) as HTMLButtonElement | null
+
+    if (trigger) {
+      trigger.click()
+      return
+    }
+
+    // Fallback: if the trigger isn't in the DOM (rare), jump to home and try again.
+    const homeEl = document.getElementById("home")
+    homeEl?.scrollIntoView({ behavior: "smooth", block: "start" })
+
+    window.setTimeout(() => {
+      const retry = document.getElementById(BETA_TRIGGER_ID) as HTMLButtonElement | null
+      retry?.click()
+    }, 350)
+  }, [])
+
+  return (
+    <header id="navbar-sticky" className={`navbar ${scrollY >= 50 ? "nav-sticky" : ""}`}>
+      <div className="container">
+        <nav>
+          <Link href="/" className="logo">
+            <Image
+              src={logo}
+              alt="Vantage Pro Analytics logo"
+              width={220}
+              height={60}
+              className="h-12 w-auto object-contain"
+            />
+          </Link>
+
+          <div className="lg:hidden flex items-center ms-auto px-2.5">
+            <button
+              className="hs-collapse-toggle inline-flex items-center justify-center h-9 w-12 rounded-md border border-white/20 bg-default-100/5"
+              type="button"
+              id="hs-unstyled-collapse"
+              data-hs-collapse="#mobileMenu"
+              data-hs-type="collapse"
+              aria-label="Toggle menu"
+            >
+              <IconifyIcon icon="lucide:menu" className="h-5 w-5 stroke-white" />
+            </button>
+          </div>
+
+          <div
+            ref={navRef}
+            id="mobileMenu"
+            className="hs-collapse transition-all duration-300 lg:basis-auto basis-full grow hidden lg:flex items-center justify-center mx-auto mt-2 lg:mt-0"
+          >
+            <ul id="navbar-navlist" className="navbar-nav">
+              {navLinks.map((item, idx) => (
+                <li key={item.link + idx} className="nav-item">
+                  <a href={item.link} className="nav-link">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* mobile CTA */}
               <div className="lg:hidden flex items-center pt-4 mt-4 lg:pt-0 lg:mt-0 border-t border-white/10 lg:border-none">
-                <a href="#" className="inline-flex items-center justify-center gap-2 bg-primary text-white py-2 px-6 rounded-full hover:bg-primary-hover transition-all duration-3"><IconifyIcon icon="lucide:arrow-big-down-dash" className="h-5 w-5 me-2" /> Request Beta Access</a>
+                <RequestDemoButton />
               </div>
             </div>
-            <div className="hidden lg:flex items-center">
-              <a href="#" className="inline-flex items-center justify-center gap-2 bg-primary text-white py-2 px-6 rounded-full hover:bg-primary-hover transition-all duration-300"><IconifyIcon icon="lucide:arrow-big-down-dash" className="h-5 w-5 me-2" />  Request Beta Access</a>
-            </div>
-          </nav>
-        </div>
-      </header>
-    </>
 
+            {/* desktop CTA */}
+            <div className="hidden lg:flex items-center">
+              <RequestDemoButton />
+            </div>
+        </nav>
+      </div>
+    </header>
   )
 }
 

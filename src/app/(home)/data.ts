@@ -246,4 +246,8 @@ export const navLinks: NavbarLinkProps[] = [
     label: 'Faq',
     link: '#faq',
   },
+  {
+    label: 'Contact',
+    link: '#contact',
+  },
 ]

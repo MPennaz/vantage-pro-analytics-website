@@ -107,6 +107,7 @@ const BetaSignupModal = ({
     <>
       {/* Trigger button */}
       <button
+        id="beta-signup-trigger"
         type="button"
         onClick={() => setOpen(true)}
         className={clsx(

@@ -96,7 +96,27 @@ const marqueeGroup2 = [
               ))}
             </div>
           </div>
-          
+
+          <div className="marquee--reverse gap-8 m-auto flex overflow-hidden mt-7">
+            <div className="marquee__group gap-8 delay-[31s] flex items-center justify-around flex-shrink-0 min-w-full">
+              {marqueeGroup2.map((item, idx) => (
+                <div className="py-3" key={idx}>
+                  <h2 className="text-5xl font-medium text-white">{item}</h2>
+                </div>
+              ))}
+            </div>
+            <div
+              aria-hidden="true"
+              className="marquee__group flex w-max items-center gap-10 flex-shrink-0"
+
+            >
+              {marqueeGroup2.map((item, idx) => (
+                <div className="py-3" key={idx}>
+                  <h2 className="text-5xl font-medium text-white">{item}</h2>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>

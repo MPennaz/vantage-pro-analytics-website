@@ -8,6 +8,8 @@ import TrendingTopics from "./components/TrendingTopics"
 
 import Footer4 from "./components/Footer4"
 import Faqs from "./components/Faqs"
+import Contact from "./components/Contact"
+
 import BackgroundNeonPureCyan from "@/components/BackgroundNeonPureCyan"
 
 const Index4 = () => {
@@ -20,6 +22,7 @@ const Index4 = () => {
       <Tools />    
       <TrendingTopics />    
       <Faqs />     
+      <Contact />
       <Footer4 />
     </>
   )
