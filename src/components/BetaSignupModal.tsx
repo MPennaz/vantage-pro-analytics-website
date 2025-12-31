@@ -161,7 +161,7 @@ const BetaSignupModal = ({
             <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-default-800">
               <div>
                 <h2 className="text-lg md:text-xl font-semibold text-white">
-                  Join the VPA Beta
+                  Join the VPA Beta (Starting Fe)
                 </h2>
                 <p className="text-xs md:text-sm text-default-300 mt-1">
                   Tell us a bit about your operation so we can prioritize the right

@@ -5,6 +5,8 @@ import { Jost } from "next/font/google";
 import AppProviders from "@/components/wrappers/AppProviders";
 import logo from '@/assets/images/logo.png'
 import Image from "next/image";
+import { Analytics } from '@vercel/analytics/react';
+
 
 import 'aos/dist/aos.css';
 import "../assets/css/style.css";
@@ -76,6 +78,7 @@ export default function RootLayout({
         <div id="__next_splash">
           <AppProviders>
             {children}
+            <Analytics />
           </AppProviders>
         </div>
       </body>
