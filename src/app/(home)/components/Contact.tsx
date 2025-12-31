@@ -1,3 +1,4 @@
+// src/app/(home)/components/Contact.tsx
 "use client"
 
 import * as React from "react"
@@ -16,10 +17,11 @@ export default function Contact() {
   })
 
   const onChange =
-    (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (key: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((s) => ({ ...s, [key]: e.target.value }))
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
     setStatus("sending")
@@ -31,7 +33,9 @@ export default function Contact() {
         body: JSON.stringify(form),
       })
 
-      const data = await res.json().catch(() => ({}))
+      const data = (await res.json().catch(
+        () => ({}) as { error?: string }
+      )) as { error?: string }
 
       if (!res.ok) {
         setStatus("error")
@@ -41,9 +45,11 @@ export default function Contact() {
 
       setStatus("sent")
       setForm({ name: "", email: "", company: "", message: "" })
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Something went wrong."
       setStatus("error")
-      setError(err?.message ?? "Something went wrong.")
+      setError(message)
     }
   }
 
@@ -53,7 +59,8 @@ export default function Contact() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-medium text-white">Contact</h2>
           <p className="mt-3 text-default-200">
-            Have a question or want to talk through your setup? Send a note and we’ll reply fast.
+            Have a question or want to talk through your setup? Send a note and
+            we’ll reply fast.
           </p>
         </div>
 
@@ -151,3 +158,4 @@ function Field({
     </label>
   )
 }
+
