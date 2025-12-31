@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef } from "react"
 import Gumshoe from "gumshoejs"
 import type { NavbarLinkProps } from "@/types/data"
 import IconifyIcon from "./wrappers/IconifyIcon"
@@ -10,7 +10,6 @@ import logo from "@/assets/images/logo.png"
 import useScrollEvent from "@/hooks/useScrollEvent"
 import RequestDemoButton from "@/components/RequestDemoButton"
 
-const BETA_TRIGGER_ID = "beta-signup-trigger"
 
 const TopNavbar = ({ navLinks }: { navLinks: NavbarLinkProps[] }) => {
   const navRef = useRef<HTMLDivElement>(null)
