@@ -157,7 +157,7 @@ const QuestionModal = ({
                   Ask a question
                 </h2>
                 <p className="text-xs md:text-sm text-default-300 mt-1">
-                  Send us a quick note and we’ll get back to you.
+                  Send us a quick note and we&apos;ll get back to you.
                 </p>
               </div>
               <button

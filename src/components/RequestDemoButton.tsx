@@ -147,7 +147,7 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
                         See VPA running in your operation
                       </h3>
                       <p className="mt-2 text-sm text-default-200">
-                        Tell us what you’d like to see. We’ll tailor the walkthrough to your process — inventory, lot traceability, QC, or wherever the pain is sharpest.
+                        Tell us what you&apos;d like to see. We&apos;ll tailor the walkthrough to your process — inventory, lot traceability, QC, or wherever the pain is sharpest.
                       </p>
                     </div>
                     <button
@@ -292,7 +292,7 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
                   {error && <p className="text-xs text-rose-400">{error}</p>}
                   {success && (
                     <p className="text-xs text-emerald-400">
-                      Thanks — your request is in. We’ll follow up shortly with
+                      Thanks — your request is in. We&apos;ll follow up shortly with
                       some time options.
                     </p>
                   )}

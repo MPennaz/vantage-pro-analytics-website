@@ -189,7 +189,7 @@ const BetaSignupModal = ({
                     Be among the first manufacturers on VPA
                   </h2>
                   <p className="text-xs md:text-sm text-default-300 mt-2">
-                    We're selecting our first manufacturing partners for early access. Tell us about your operation — we'll confirm your spot and guide you through setup.
+                    We&apos;re selecting our first manufacturing partners for early access. Tell us about your operation — we&apos;ll confirm your spot and guide you through setup.
                   </p>
                 </div>
                 <button
