@@ -137,27 +137,42 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
               {/* card */}
               <div className="relative w-full max-w-xl rounded-3xl border border-white/10 bg-default-950/95 shadow-2xl overflow-hidden">
                 {/* header */}
-                <div className="flex items-start justify-between gap-4 border-b border-white/10 p-6">
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-default-400">
-                      Request a Demo
-                    </p>
-                    <h3 className="mt-2 text-xl md:text-2xl font-semibold text-white">
-                      See Vantage Pro Analytics in your world
-                    </h3>
-                    <p className="mt-2 text-sm text-default-200">
-                      Share a bit about your operation and what you’d like to
-                      see. We’ll follow up with a short call slot and a tailored
-                      walkthrough.
-                    </p>
+                <div className="p-6 border-b border-white/10">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-2">
+                        Schedule a Demo
+                      </p>
+                      <h3 className="text-xl md:text-2xl font-semibold text-white">
+                        See VPA running in your operation
+                      </h3>
+                      <p className="mt-2 text-sm text-default-200">
+                        Tell us what you’d like to see. We’ll tailor the walkthrough to your process — inventory, lot traceability, QC, or wherever the pain is sharpest.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setOpen(false)}
+                      className="shrink-0 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs md:text-sm text-default-200 hover:bg-white/10 hover:text-white transition"
+                    >
+                      Close
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setOpen(false)}
-                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs md:text-sm text-default-200 hover:bg-white/10 hover:text-white transition"
-                  >
-                    Close
-                  </button>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {[
+                      "30-min focused walkthrough",
+                      "Tailored to your process",
+                      "Live in 4–8 weeks",
+                    ].map((label) => (
+                      <span
+                        key={label}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-default-300"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                        {label}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* body / form */}
@@ -217,32 +232,46 @@ const RequestDemoButton: React.FC<Props> = ({ className }) => {
                       <label className="block text-xs font-medium uppercase tracking-wide text-default-400 mb-1">
                         Plants / sites
                       </label>
-                      <select
-                        value={plants}
-                        onChange={(e) => setPlants(e.target.value)}
-                        className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary/70"
-                      >
-                        <option value="">Select…</option>
-                        <option value="1">1 plant</option>
-                        <option value="2-4">2–4 plants</option>
-                        <option value="5-9">5–9 plants</option>
-                        <option value="10+">10+ plants</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          value={plants}
+                          onChange={(e) => setPlants(e.target.value)}
+                          className="w-full appearance-none rounded-xl border border-white/10 bg-[#0D1B2A] px-3 py-2 pr-8 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary/70 cursor-pointer"
+                        >
+                          <option value="" className="bg-[#0D1B2A]">Select…</option>
+                          <option value="1" className="bg-[#0D1B2A]">1 plant</option>
+                          <option value="2-4" className="bg-[#0D1B2A]">2–4 plants</option>
+                          <option value="5-9" className="bg-[#0D1B2A]">5–9 plants</option>
+                          <option value="10+" className="bg-[#0D1B2A]">10+ plants</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                          <svg className="h-4 w-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                     <div>
                       <label className="block text-xs font-medium uppercase tracking-wide text-default-400 mb-1">
                         Timeline
                       </label>
-                      <select
-                        value={timeline}
-                        onChange={(e) => setTimeline(e.target.value)}
-                        className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary/70"
-                      >
-                        <option value="">Just exploring</option>
-                        <option value="this-quarter">This quarter</option>
-                        <option value="3-6-months">3–6 months</option>
-                        <option value="asap">ASAP / active project</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          value={timeline}
+                          onChange={(e) => setTimeline(e.target.value)}
+                          className="w-full appearance-none rounded-xl border border-white/10 bg-[#0D1B2A] px-3 py-2 pr-8 text-sm text-white outline-none focus:border-primary focus:ring-1 focus:ring-primary/70 cursor-pointer"
+                        >
+                          <option value="" className="bg-[#0D1B2A]">Just exploring</option>
+                          <option value="this-quarter" className="bg-[#0D1B2A]">This quarter</option>
+                          <option value="3-6-months" className="bg-[#0D1B2A]">3–6 months</option>
+                          <option value="asap" className="bg-[#0D1B2A]">ASAP / active project</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                          <svg className="h-4 w-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

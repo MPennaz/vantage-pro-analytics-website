@@ -211,13 +211,21 @@ const Tools = () => {
 
                     <div className="grid gap-6">
                       <InsightCard
-                        title="Executive snapshot"
+                        title="At-a-glance signals"
                         subtitle="The few numbers you actually need today"
                         items={[
                           { label: "Orders at risk", value: "5", tone: "warn" },
                           { label: "On-time outlook", value: "92%", tone: "ok" },
-                          { label: "Top cost driver", value: "scrap (Line 3)", tone: "warn" },
-                          { label: "Biggest win", value: "changeover down 11%", tone: "good" },
+                          {
+                            label: "Top cost driver",
+                            value: "scrap (Line 3)",
+                            tone: "warn",
+                          },
+                          {
+                            label: "Biggest win",
+                            value: "changeover down 11%",
+                            tone: "good",
+                          },
                         ]}
                       />
                       <CalloutCard
@@ -294,69 +302,90 @@ const Tools = () => {
                   </div>
                 </div>
               )}
-                {/* MES */}
-                {isActive("mes") && (
-                  <div
-                    className="transition-all duration-300 transform opacity-100 translate-y-0"
-                    role="tabpanel"
-                    aria-label="MES Lite"
-                  >
-                    <div className="grid xl:grid-cols-2 gap-6">
-                      {/* Left: narrative (matches ERP/QC style) */}
-                      <div className="p-6 rounded-xl border border-white/10">
-                        <h2 className="text-3xl font-medium text-white">
-                          MES Lite — real-time view of the plant.
-                        </h2>
-                        <p className="text-base font-medium text-default-200 mt-5">
-                          Know what’s running, what’s stuck, and what’s about to go sideways — in one
-                          place. Operators get a simple flow. Managers get live status across lines,
-                          kettles, or cells.
+
+              {/* MES */}
+              {isActive("mes") && (
+                <div
+                  className="transition-all duration-300 transform opacity-100 translate-y-0"
+                  role="tabpanel"
+                  aria-label="MES Lite"
+                >
+                  <div className="grid xl:grid-cols-2 gap-6">
+                    {/* Left: narrative */}
+                    <div className="p-6 rounded-xl border border-white/10">
+                      <h2 className="text-3xl font-medium text-white">
+                        MES Lite — operators know what’s about to happen.
+                      </h2>
+
+                      <p className="text-base font-medium text-default-200 mt-5">
+                        Real-time awareness for the floor, early warnings for supervisors, and clean
+                        handoffs when something needs attention. VPA focuses on what matters:
+                        run state, cycle drift, downtime, and material constraints — tied to orders.
+                      </p>
+
+                      <p className="text-base font-medium text-default-200 mt-4">
+                        You don’t “find out later.” You see it while there’s still time to fix it.
+                      </p>
+
+                      <div className="mt-6 rounded-lg border border-white/10 bg-black/20 p-4">
+                        <p className="text-sm font-semibold text-white">
+                          Example: the line didn’t fall behind
                         </p>
-
-                        <div className="mt-6 rounded-lg border border-white/10 bg-black/20 p-4">
-                          <p className="text-sm font-semibold text-white">
-                            Example: line falling behind
-                          </p>
-                          <p className="mt-1 text-sm font-medium text-default-200">
-                            • Cycle time drift detected on Line 3
-                            <br />
-                            • Predicted ship-risk on 2 orders if trend continues
-                            <br />
-                            • Suggested action: adjust staffing / prioritize changeover / QC sampling
-                          </p>
-                        </div>
-
-                        <p className="text-base font-medium text-default-200 mt-4">
-                          Built from real plant experience — not generic templates.
+                        <p className="mt-1 text-sm font-medium text-default-200">
+                          • Cycle time drift detected early on Line 3 (trend accelerating)
+                          <br />
+                          • Supervisor alerted with likely causes + next best actions
+                          <br />
+                          • Batch unit + work cell plan adjusted before the schedule slipped
                         </p>
                       </div>
 
-                      {/* Right: Insight + Callout (same structure as ERP/QC) */}
-                      <div className="grid gap-6">
-                        <InsightCard
-                          title="Production pulse"
-                          subtitle="What the floor needs right now"
-                          items={[
-                            { label: "Running batches", value: "6", tone: "ok" },
-                            { label: "At risk (delay)", value: "2", tone: "warn" },
-                            { label: "Exceptions today", value: "3", tone: "warn" },
-                            { label: "Avg cycle vs target", value: "-7%", tone: "good" },
-                          ]}
-                        />
-
-                        <CalloutCard
-                          title="Why it’s different"
-                          bullets={[
-                            "One timeline per batch — timestamps, operators, exceptions.",
-                            "Live status + early warnings (not after-the-fact reporting).",
-                            "Everything links back to orders, QC, and inventory movements.",
-                          ]}
-                        />
+                      <div className="mt-4 rounded-lg border border-white/10 bg-black/20 p-4">
+                        <p className="text-sm font-semibold text-white">
+                          Designed for the floor first
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-default-200">
+                          Operators get simple “what’s next” visibility. Supervisors get early
+                          warnings + corrections. Maintenance tie-ins can plug in later without
+                          changing the core model.
+                        </p>
                       </div>
                     </div>
-                  </div>
-                )}
 
+                    {/* Right: Insight + Callout */}
+                    <div className="grid gap-6">
+                      <InsightCard
+                        title="Production pulse"
+                        subtitle="Live status across lines, batch units, and work cells"
+                        items={[
+                          { label: "Running batches", value: "6", tone: "ok" },
+                          { label: "At risk (delay)", value: "2", tone: "warn" },
+                          { label: "Cycle drift alerts", value: "3", tone: "warn" },
+                          { label: "Avg cycle vs target", value: "-7%", tone: "good" },
+                        ]}
+                      />
+
+                      <CalloutCard
+                        title="Why it’s different"
+                        bullets={[
+                          "The story is preventative: detect early → correct → stay on plan.",
+                          "Operator-first visibility + supervisor-level interventions.",
+                          "Everything links back to orders, QC, and inventory movements.",
+                        ]}
+                      />
+
+                      <CalloutCard
+                        title="What it enables (now + later)"
+                        bullets={[
+                          "Now: early warnings + recommended corrections to protect the plan.",
+                          "Later: maintenance workflows (tickets, parts, downtime reasons) without rework.",
+                          "Always: a single timeline per batch unit and work cell.",
+                        ]}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* QC */}
               {isActive("qc") && (

@@ -1,7 +1,8 @@
 // src/components/BetaSignupModal.tsx
 "use client"
 
-import { useState, FormEvent } from "react"
+import { useState, useEffect, FormEvent } from "react"
+import { createPortal } from "react-dom"
 import clsx from "clsx"
 
 type BetaSignupModalProps = {
@@ -19,6 +20,20 @@ const BetaSignupModal = ({
   triggerClassName,
 }: BetaSignupModalProps) => {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false)
+    }
+    document.addEventListener("keydown", onKeyDown)
+    return () => document.removeEventListener("keydown", onKeyDown)
+  }, [open])
 
   const [fullName, setFullName] = useState("")
   const [email, setEmail] = useState("")
@@ -154,28 +169,53 @@ const BetaSignupModal = ({
       )}
 
       {/* Modal */}
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-          <div className="relative w-full max-w-xl rounded-2xl bg-default-950 border border-default-800 shadow-2xl">
+      {mounted && open ? createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-8">
+          {/* overlay */}
+          <button
+            aria-label="Close"
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
+          />
+          <div className="relative w-full max-w-xl rounded-2xl bg-default-950 border border-default-800 shadow-2xl overflow-y-auto max-h-[calc(100vh-4rem)]">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-default-800">
-              <div>
-                <h2 className="text-lg md:text-xl font-semibold text-white">
-                  Join the VPA Beta (Starting Feb 2026)
-                </h2>
-                <p className="text-xs md:text-sm text-default-300 mt-1">
-                  Tell us a bit about your operation so we can prioritize the right
-                  manufacturers for early access.
-                </p>
+            <div className="px-6 pt-6 pb-5 border-b border-default-800">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-2">
+                    Early Access Program
+                  </p>
+                  <h2 className="text-xl md:text-2xl font-semibold text-white">
+                    Be among the first manufacturers on VPA
+                  </h2>
+                  <p className="text-xs md:text-sm text-default-300 mt-2">
+                    We're selecting our first manufacturing partners for early access. Tell us about your operation — we'll confirm your spot and guide you through setup.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="shrink-0 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-default-200 hover:bg-white/10 hover:text-white transition"
+                  aria-label="Close"
+                >
+                  Close
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="ml-4 inline-flex h-8 w-8 items-center justify-center rounded-full bg-default-900 text-default-300 hover:text-white hover:bg-default-800 transition"
-                aria-label="Close"
-              >
-                ×
-              </button>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  "Live in 4–8 weeks",
+                  "No consultants required",
+                  "Built by manufacturers",
+                ].map((label) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-default-300"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Body */}
@@ -235,22 +275,25 @@ const BetaSignupModal = ({
                   <label className="block text-xs font-medium text-default-300 mb-1">
                     Manufacturing type<span className="text-red-500 ml-0.5">*</span>
                   </label>
-                  <select
-                    className="w-full rounded-lg border border-default-800 bg-default-950/80 px-3 py-2 text-sm text-default-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    value={manufacturingType}
-                    onChange={(e) => setManufacturingType(e.target.value)}
-                  >
-                    <option value="">Select one…</option>
-                    <option value="Batch / Process )">
-                      Batch / Process 
-                    </option>
-                    <option value="Discrete ">
-                      Discrete 
-                    </option>
-                    <option value="Plastics / Composites">Plastics / Composites</option>
-                    <option value="Food & Beverage">Food & Beverage</option>
-                    <option value="Other / Mixed">Other / Mixed</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      className="w-full appearance-none rounded-lg border border-default-800 bg-[#0D1B2A] px-3 py-2 pr-8 text-sm text-default-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer"
+                      value={manufacturingType}
+                      onChange={(e) => setManufacturingType(e.target.value)}
+                    >
+                      <option value="" className="bg-[#0D1B2A] text-default-100">Select one…</option>
+                      <option value="Batch / Process" className="bg-[#0D1B2A] text-default-100">Batch / Process</option>
+                      <option value="Discrete" className="bg-[#0D1B2A] text-default-100">Discrete</option>
+                      <option value="Plastics / Composites" className="bg-[#0D1B2A] text-default-100">Plastics / Composites</option>
+                      <option value="Food & Beverage" className="bg-[#0D1B2A] text-default-100">Food & Beverage</option>
+                      <option value="Other / Mixed" className="bg-[#0D1B2A] text-default-100">Other / Mixed</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                      <svg className="h-4 w-4 text-default-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -322,8 +365,9 @@ const BetaSignupModal = ({
               </div>
             </form>
           </div>
-        </div>
-      )}
+        </div>,
+        document.body,
+      ) : null}
     </>
   )
 }
