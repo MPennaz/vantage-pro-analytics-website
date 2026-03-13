@@ -184,7 +184,7 @@ const Tools = () => {
                       <div className="mt-6 grid gap-3">
                         <div className="rounded-lg border border-white/10 bg-black/20 p-4">
                           <p className="text-sm font-semibold text-white">
-                            Example “What changed this week?”
+                            Example "What changed this week?"
                           </p>
                           <p className="mt-1 text-sm font-medium text-default-200">
                             • Scrap up <span className="text-white">+18%</span> on
@@ -246,20 +246,22 @@ const Tools = () => {
                 <div
                   className="transition-all duration-300 transform opacity-100 translate-y-0"
                   role="tabpanel"
-                  aria-label="ERP Lite"
+                  aria-label="ERP"
                 >
                   <div className="grid xl:grid-cols-2 gap-6">
                     <div className="p-6 rounded-xl border border-white/10">
                       <h2 className="text-3xl font-medium text-white">
-                        ERP Lite — clean system of record, built for ops.
+                        ERP — the full operational backbone, built for manufacturers.
                       </h2>
                       <p className="text-base font-medium text-default-200 mt-5">
-                        Item Master, customers, suppliers, inventory, and orders — in one
-                        place — designed for traceability without the ERP bloat.
+                        Item Master, inventory, purchasing, orders, BOM, and shipping — all
+                        connected in one place. Full lot traceability from receipt to
+                        shipment, without the setup cost or complexity of legacy ERP.
                       </p>
                       <p className="text-base font-medium text-default-200 mt-4">
-                        The point isn’t more screens. It’s less chaos: one source of truth
-                        that feeds MES, QC, and Analytics automatically.
+                        Every department works from the same source of truth. When
+                        production starts a batch, QC can track it. When shipping picks an
+                        order, inventory updates. No manual handoffs.
                       </p>
 
                       <div className="mt-6 rounded-lg border border-white/10 bg-black/20 p-4">
@@ -273,7 +275,7 @@ const Tools = () => {
                           <br />
                           • Suggested substitutions + earliest ship date
                           <br />
-                          • Production + purchasing + customer service all see the same status
+                          • Production, purchasing, and customer service all see the same status
                         </p>
                       </div>
                     </div>
@@ -293,9 +295,9 @@ const Tools = () => {
                       <CalloutCard
                         title="Built for real operations"
                         bullets={[
-                          "Traceability by design (items → lots → batches → shipments).",
-                          "Shortage + promise-date visibility without building reports.",
-                          "Start lightweight, then expand — same data model, same story.",
+                          "Full lot traceability from receipt to shipment — no manual tracking.",
+                          "Shortage and promise-date visibility without building reports.",
+                          "BOM, customers, suppliers, and orders — one connected record.",
                         ]}
                       />
                     </div>
@@ -308,46 +310,48 @@ const Tools = () => {
                 <div
                   className="transition-all duration-300 transform opacity-100 translate-y-0"
                   role="tabpanel"
-                  aria-label="MES Lite"
+                  aria-label="MES"
                 >
                   <div className="grid xl:grid-cols-2 gap-6">
                     {/* Left: narrative */}
                     <div className="p-6 rounded-xl border border-white/10">
                       <h2 className="text-3xl font-medium text-white">
-                        MES Lite — operators know what’s about to happen.
+                        MES — production intelligence that keeps you ahead of the floor.
                       </h2>
 
                       <p className="text-base font-medium text-default-200 mt-5">
-                        Real-time awareness for the floor, early warnings for supervisors, and clean
-                        handoffs when something needs attention. VPA focuses on what matters:
-                        run state, cycle drift, downtime, and material constraints — tied to orders.
+                        Batch management, formula execution, raw material issuance, and
+                        yield tracking — tied to real orders and QC results. VPA tracks run
+                        state, cycle drift, downtime, and material constraints so you know
+                        what&apos;s happening while there&apos;s still time to act.
                       </p>
 
                       <p className="text-base font-medium text-default-200 mt-4">
-                        You don’t “find out later.” You see it while there’s still time to fix it.
+                        Operators get simple, role-specific screens. Supervisors get early
+                        warnings. Management gets the full picture — all from the same system.
                       </p>
 
                       <div className="mt-6 rounded-lg border border-white/10 bg-black/20 p-4">
                         <p className="text-sm font-semibold text-white">
-                          Example: the line didn’t fall behind
+                          Example: the line didn&apos;t fall behind
                         </p>
                         <p className="mt-1 text-sm font-medium text-default-200">
                           • Cycle time drift detected early on Line 3 (trend accelerating)
                           <br />
                           • Supervisor alerted with likely causes + next best actions
                           <br />
-                          • Batch unit + work cell plan adjusted before the schedule slipped
+                          • Batch plan adjusted before the schedule slipped
                         </p>
                       </div>
 
                       <div className="mt-4 rounded-lg border border-white/10 bg-black/20 p-4">
                         <p className="text-sm font-semibold text-white">
-                          Designed for the floor first
+                          Built for process and discrete manufacturing
                         </p>
                         <p className="mt-1 text-sm font-medium text-default-200">
-                          Operators get simple “what’s next” visibility. Supervisors get early
-                          warnings + corrections. Maintenance tie-ins can plug in later without
-                          changing the core model.
+                          Chemical, food, coatings, plastics, or assembly — VPA handles batch
+                          and formula-based production today, with discrete work orders and
+                          routings available for mixed operations.
                         </p>
                       </div>
                     </div>
@@ -366,20 +370,20 @@ const Tools = () => {
                       />
 
                       <CalloutCard
-                        title="Why it’s different"
+                        title="Why it&apos;s different"
                         bullets={[
-                          "The story is preventative: detect early → correct → stay on plan.",
-                          "Operator-first visibility + supervisor-level interventions.",
-                          "Everything links back to orders, QC, and inventory movements.",
+                          "Detect early, correct fast — not a postmortem after the shift.",
+                          "Operator-first screens + supervisor-level visibility in one system.",
+                          "Every batch tied to orders, QC results, and inventory movements.",
                         ]}
                       />
 
                       <CalloutCard
-                        title="What it enables (now + later)"
+                        title="What you get from day one"
                         bullets={[
-                          "Now: early warnings + recommended corrections to protect the plan.",
-                          "Later: maintenance workflows (tickets, parts, downtime reasons) without rework.",
-                          "Always: a single timeline per batch unit and work cell.",
+                          "Batch execution with formula management and RM issuance.",
+                          "Yield tracking and finished goods output against planned targets.",
+                          "A single production record — no paper logs, no manual reconciliation.",
                         ]}
                       />
                     </div>
@@ -401,7 +405,7 @@ const Tools = () => {
                       </h2>
                       <p className="text-base font-medium text-default-200 mt-5">
                         Capture results, specs, adjustments, and trends with full batch
-                        traceability. QC and production share one view of what’s in spec,
+                        traceability. QC and production share one view of what&apos;s in spec,
                         drifting, or out of bounds — before it becomes scrap or rework.
                       </p>
 

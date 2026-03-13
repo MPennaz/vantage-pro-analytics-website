@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Third Part APIs:
 
 https://resend.com/ = Sending emails (Hooked to Godaddy domain)
+
+git add .
+git commit -m "Features update and fix to Beta Modal"
+git push

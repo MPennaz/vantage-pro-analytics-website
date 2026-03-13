@@ -189,7 +189,7 @@ export const faqs: FaqType[] = [
     id: 1,
     question: "Is Vantage Pro Analytics a full ERP or just an add-on?",
     answer:
-      "VPA starts as a focused operational platform — ERP Lite, MES Lite, QC and Analytics in one place. Teams can use it alongside existing systems at first, or adopt it as their primary operational system as they grow.",
+      "VPA is a full operational platform — ERP, MES, QC, and Analytics in one connected system. Teams can start with the modules that solve the biggest pain first, then expand — without a rip-and-replace project.",
   },
   {
     id: 2,
