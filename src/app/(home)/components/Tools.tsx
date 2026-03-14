@@ -184,7 +184,7 @@ const Tools = () => {
                       <div className="mt-6 grid gap-3">
                         <div className="rounded-lg border border-white/10 bg-black/20 p-4">
                           <p className="text-sm font-semibold text-white">
-                            Example "What changed this week?"
+                            Example: &ldquo;What changed this week?&rdquo;
                           </p>
                           <p className="mt-1 text-sm font-medium text-default-200">
                             • Scrap up <span className="text-white">+18%</span> on
